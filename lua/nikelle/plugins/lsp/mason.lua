@@ -28,10 +28,7 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
-				"lua_ls",
 				"gopls",
-				"buf-language-server",
-				"bzl",
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
