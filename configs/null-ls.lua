@@ -1,10 +1,12 @@
 local null_ls = require("null-ls")
+local go_formatter = require('custom.formatters.go-formatter')
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local opts = {
   sources = {
     null_ls.builtins.formatting.gofumpt,
-    null_ls.builtins.formatting.goimports_reviser,
+    -- null_ls.builtins.formatting.goimports,
+    go_formatter,
     null_ls.builtins.formatting.golines,
   },
   on_attach = function(client, bufnr)

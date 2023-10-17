@@ -10,12 +10,15 @@ lspconfig.gopls.setup {
   cmd = {"gopls"},
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+  single_file_support = true,
   settings = {
     gopls = {
       completeUnimported = true,
       usePlaceholders = true,
       analyses = {
         unusedparams = true,
+        unreachable = true,
+        staticcheck = true,
       },
     },
   },

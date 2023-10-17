@@ -53,9 +53,48 @@ M.gopher = {
         }
   }
 }
-
 M.abc = {
     n = {
+        ["<C-a>"] = {
+            function ()
+                require('harpoon.mark').add_file()
+            end,
+            "Harpoon Mark file",
+        },
+        ["<C-e>"] = {
+            function ()
+                require('harpoon.ui').toggle_quick_menu()
+            end,
+            "Harpoon Toggle Quick Menu",
+        },
+        ["<C-h>"] = {
+            function ()
+                require('harpoon.ui').nav_file(1)
+            end,
+            "Navigate Harpoon file 1",
+        },
+        ["<C-j>"] = {
+            function ()
+                require('harpoon.ui').nav_file(2)
+            end,
+            "Navigate Harpoon file 2",
+        },
+        ["<C-k>"] = {
+            function ()
+                require('harpoon.ui').nav_file(3)
+            end,
+            "Navigate Harpoon file 3",
+        },
+        ["<C-l>"] = {
+            function ()
+                require('harpoon.ui').nav_file(4)
+            end,
+            "Navigate Harpoon file 4",
+        },
+        ["<leader>pv"] = {
+            "<cmd>NvimTreeOpen<CR>",
+            "Open NvimTree",
+        },
         ["Q"] = {
             "<nop>",
             "Q is nop",
@@ -87,42 +126,26 @@ M.abc = {
         },
         ["<leader>d"] = {
             [["_d]],
+            "'d' key without deleting into paste register"
         },
-        ["<C-k>"] = {
+        ["<C-p>"] = {
             "<cmd>cnext<CR>zz",
             "Select next option in hint dropdown",
         },
-        ["<C-j"] = {
+        ["<C-n>"] = {
             "<cmd>cprev<CR>zz",
+            "Select previous option in hint dropdown",
         },
-        ["<leader>s"] = {
+        ['<C-y>'] = {
+            function ()
+                require('cmp').mapping.confirm({ select = true })
+            end,
+            "Accept LSP Suggestion",
+        },
+        ["<leader>ss"] = {
             [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
             "Open regex to replace current word",
         },
-        ["<leader>tx"] = {
-            "<cmd>tabclose<CR>",
-            "Close current tab",
-        },
-        ["<leader>tf"] = {
-            "<cmd>tabnew %<CR>",
-            "Open new tab with current buffer",
-        },
-        ["<leader>sv"] = {
-            "<C-w>v",
-            "Split vertically",
-        },
-        ["<leader>sh"] = {
-            "<C-w>s",
-            "Split horizontally",
-        },
-        ["<leader>se"] = {
-            "<C-w>=",
-            "Set splits to be equal width",
-        },
-        ["<leader>sx"] = {
-            "<cmd>close<CR>",
-            "Close split"
-        }
     },
     v = {
         ["J"] = {
@@ -136,6 +159,12 @@ M.abc = {
         ["<leader>y"] = {
             '"+y',
             "Yank into system clipboard",
+        }
+    },
+    x = {
+        ["<leader>p"] = {
+            "[[\"_dP]]",
+            "delete selection into void buffer then paste",
         }
     }
 }

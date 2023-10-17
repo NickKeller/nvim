@@ -6,6 +6,7 @@ local plugins = {
         "gopls",
         "pyright",
         "yaml-language-server",
+        "rust-analyzer",
       },
     },
   },
@@ -55,6 +56,10 @@ local plugins = {
         opts = function()
             return require "custom.configs.nvtree"
         end
+    },
+    {
+        "theprimeagen/harpoon"
+
     }
 }
 return plugins
