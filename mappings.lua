@@ -18,6 +18,18 @@ M.dap = {
   }
 }
 
+M.dap_python = {
+    plugin = true,
+    n = {
+        ["<leader>dpr"] = {
+            function ()
+                require('dap-python').test_method()
+            end,
+            "Debug Python Run",
+        }
+    }
+}
+
 M.dap_go = {
   plugin = true,
   n = {
@@ -146,6 +158,10 @@ M.abc = {
             [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
             "Open regex to replace current word",
         },
+        ["<C-c>"] = {
+            "<Esc>",
+            "Ctrl-c to Escape",
+        }
     },
     v = {
         ["J"] = {

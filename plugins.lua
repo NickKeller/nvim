@@ -7,17 +7,16 @@ local plugins = {
         "pyright",
         "yaml-language-server",
         "rust-analyzer",
-                "autopep8",
-                "buf-language-server",
-                "debugpy",
-                "delve",
-                "gofumpt",
-                "golines",
-                "golangci-lint",
-                "lua-language-server",
-               "luaformatter", 
-                "prettier",
-                "pylint",
+        "buf-language-server",
+        "debugpy",
+        "delve",
+        "gofumpt",
+        "golines",
+        "golangci-lint",
+        "lua-language-server",
+        "mypy",
+        "ruff",
+        "black",
       },
     },
   },
@@ -29,24 +28,55 @@ local plugins = {
   },
   {
     "dreamsofcode-io/nvim-dap-go",
-    ft = "go",
     dependencies = "mfussenegger/nvim-dap",
     config = function(_, opts)
       require("dap-go").setup(opts)
       require("core.utils").load_mappings("dap_go")
     end
   },
+    {
+        "mfussenegger/nvim-dap-python",
+        ft = "python",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            "rcarriga/nvim-dap-ui",
+        },
+        config = function(_, opts)
+            local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+            require("dap-python").setup(path)
+            require("core.utils").load_mappings("dap_python")
+        end,
+    },
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = "mfussenegger/nvim-dap",
+        config = function ()
+            local dap = require("dap")
+            local dapui = require("dapui")
+            dapui.setup()
+            dap.listeners.after.event_initialized["dapui_config"] = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated["dapui_config"] = function ()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"] = function ()
+                dapui.close()
+            end
+        end
+    },
   {
     "neovim/nvim-lspconfig",
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig-go"
       require "custom.configs.lspconfig-yaml"
+      require "custom.configs.lspconfig-python"
     end,
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = "go",
+    ft = {"python", "go"},
     opts = function()
       return require "custom.configs.null-ls"
     end,
@@ -71,6 +101,21 @@ local plugins = {
     {
         "theprimeagen/harpoon"
 
-    }
+    },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    init = function()
+      require("core.utils").lazy_load "nvim-treesitter"
+    end,
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    build = ":TSUpdate",
+    opts = function()
+      return require "custom.configs.treesitter"
+    end,
+    config = function(_, opts)
+      dofile(vim.g.base46_cache .. "syntax")
+      require("nvim-treesitter.configs").setup(opts)
+    end,
+  },
 }
 return plugins
