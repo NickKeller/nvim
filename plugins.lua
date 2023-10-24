@@ -73,6 +73,7 @@ local plugins = {
       require "custom.configs.lspconfig-go"
       require "custom.configs.lspconfig-yaml"
       require "custom.configs.lspconfig-python"
+      require "custom.configs.lspconfig-bash"
     end,
   },
   {
