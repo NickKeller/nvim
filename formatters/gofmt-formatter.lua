@@ -4,9 +4,9 @@ local methods = require("null-ls.methods")
 local FORMATTING = methods.internal.FORMATTING
 
 return h.make_builtin({
-    name = "gofmt",
+    name = "gofumpt",
     meta = {
-        url = "https://pkg.go.dev/cmd/gofmt",
+        url = "https://pkg.go.dev/mvdan.cc/gofumpt",
         description = "Formats go programs.",
         notes = {
             "It uses tabs for indentation and blanks for alignment.",
@@ -16,7 +16,7 @@ return h.make_builtin({
     method = FORMATTING,
     filetypes = { "go" },
     generator_opts = {
-        command = "gofmt",
+        command = "gofumpt",
         to_stdin = true,
         arguments = {"-s", "-w", "$FILENAME"}
     },
