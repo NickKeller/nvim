@@ -1,6 +1,7 @@
 local null_ls = require("null-ls")
 local go_formatter = require('custom.formatters.go-formatter')
-local gofmt_formatter = require('custom.formatters.gofmt-formatter')
+local gofumpt_formatter = require('custom.formatters.gofumpt-formatter')
+local goimports_reviser_formatter = require('custom.formatters.goimports-reviser-formatter')
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local opts = {
@@ -9,8 +10,8 @@ local opts = {
     null_ls.builtins.diagnostics.ruff,
     null_ls.builtins.formatting.black,
     go_formatter,
-    gofmt_formatter,
-    null_ls.builtins.formatting.golines,
+    gofumpt_formatter,
+    goimports_reviser_formatter,
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then

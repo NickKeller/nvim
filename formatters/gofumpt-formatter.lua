@@ -5,14 +5,6 @@ local FORMATTING = methods.internal.FORMATTING
 
 return h.make_builtin({
     name = "gofumpt",
-    meta = {
-        url = "https://pkg.go.dev/mvdan.cc/gofumpt",
-        description = "Formats go programs.",
-        notes = {
-            "It uses tabs for indentation and blanks for alignment.",
-            "Aligntment assumes that the editor is using a fixed-width font.",
-        },
-    },
     method = FORMATTING,
     filetypes = { "go" },
     generator_opts = {
