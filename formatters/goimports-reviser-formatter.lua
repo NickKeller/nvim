@@ -9,7 +9,8 @@ return h.make_builtin({
     filetypes = { "go" },
     generator_opts = {
         command = "goimports-reviser",
-        to_stdin = true,
+        to_temp_file = true,
+        prepend_extra_args = true,
         arguments = {"-company-prefixes", "'go.goms.io/aks/rp'", "-excludes", "'proto/'", "-rm-unused", "$FILENAME"}
     },
     factory = h.formatter_factory,
