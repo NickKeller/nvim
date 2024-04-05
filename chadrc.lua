@@ -2,7 +2,7 @@
 local M = {}
 
 M.ui = { 
-    theme = 'github_light',
+    theme = 'github_dark',
     tabufline = {
         enabled = false,
     }
