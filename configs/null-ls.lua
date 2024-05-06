@@ -1,14 +1,11 @@
-local null_ls = require("null-ls")
-local gofumpt_formatter = require('custom.formatters.gofumpt-formatter')
+-- local null_ls = require("null-ls")
+-- local gofumpt_formatter = require('custom.formatters.gofumpt-formatter')
 local goimports_reviser_formatter = require('custom.formatters.goimports-reviser-formatter')
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local opts = {
   sources = {
-    null_ls.builtins.diagnostics.mypy,
-    null_ls.builtins.diagnostics.ruff,
-    null_ls.builtins.formatting.black,
-    gofumpt_formatter,
+    -- gofumpt_formatter,
     goimports_reviser_formatter,
   },
   on_attach = function(client, bufnr)

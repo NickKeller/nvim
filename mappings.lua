@@ -115,9 +115,25 @@ M.abc = {
             end,
             "Navigate Harpoon file 4",
         },
-        ["<leader>pv"] = {
-            "<cmd>NvimTreeOpen<CR>",
+        ["<leader>e"] = {
+            "<cmd>NvimTreeFocus<CR>",
             "Open NvimTree",
+        },
+        ["<leader>co"] = {
+            "<cmd>copen<CR>",
+            "Open QuickFix list",
+        },
+        ["<leader>cn"] = {
+            "<cmd>cnext<CR>",
+            "Next QuickFix",
+        },
+        ["<leader>cp"] = {
+            "<cmd>cprev<CR>",
+            "Previous QuickFix",
+        },
+        ["<leader>cq"] = {
+            "<cmd>cclose<CR>",
+            "Close QuickFix list",
         },
         ["Q"] = {
             "<nop>",
