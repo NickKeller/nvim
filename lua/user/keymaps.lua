@@ -196,7 +196,7 @@ nnoremap("<leader>m", ":MaximizerToggle<cr>")
 nnoremap("<leader>=", "<C-w>=")
 
 -- Press leader f to format
-nnoremap("<leader>f", function()
+nnoremap("<leader>fm", function()
     conform.format({ async = true, lsp_fallback = true })
 end, { desc = "Format the current buffer" })
 
