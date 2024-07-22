@@ -215,38 +215,28 @@ end)
 
 -- Add current file to harpoon
 nnoremap("<leader>ha", function()
-    harpoon_mark.add_file()
-end)
-
--- Remove current file from harpoon
-nnoremap("<leader>hr", function()
-    harpoon_mark.rm_file()
-end)
-
--- Remove all files from harpoon
-nnoremap("<leader>hc", function()
-    harpoon_mark.clear_all()
+    harpoon:list():add()
 end)
 
 -- Quickly jump to harpooned files
 nnoremap("<leader>1", function()
-    harpoon_ui.nav_file(1)
+    harpoon:list():select(1)
 end)
 
 nnoremap("<leader>2", function()
-    harpoon_ui.nav_file(2)
+    harpoon:list():select(2)
 end)
 
 nnoremap("<leader>3", function()
-    harpoon_ui.nav_file(3)
+    harpoon:list():select(3)
 end)
 
 nnoremap("<leader>4", function()
-    harpoon_ui.nav_file(4)
+    harpoon:list():select(4)
 end)
 
 nnoremap("<leader>5", function()
-    harpoon_ui.nav_file(5)
+    harpoon:list():select(5)
 end)
 
 -- Git keymaps --
