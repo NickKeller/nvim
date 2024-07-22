@@ -3,14 +3,12 @@ local vnoremap = require("user.keymap_utils").vnoremap
 local inoremap = require("user.keymap_utils").inoremap
 local tnoremap = require("user.keymap_utils").tnoremap
 local xnoremap = require("user.keymap_utils").xnoremap
-local harpoon_ui = require("harpoon.ui")
-local harpoon_mark = require("harpoon.mark")
+local harpoon_show = require("user.harpoon").show
+local harpoon = require("harpoon")
 local conform = require("conform")
 local utils = require("user.utils")
 
 local M = {}
-
-local TERM = os.getenv("TERM")
 
 -- Normal --
 -- Disable Space bar since it'll be used as the leader key
@@ -212,7 +210,7 @@ nnoremap("<leader>tc", ":TSC<cr>", { desc = "[T]ypeScript [C]ompile" })
 -- Harpoon keybinds --
 -- Open harpoon ui
 nnoremap("<leader>ho", function()
-    harpoon_ui.toggle_quick_menu()
+    harpoon_show(harpoon:list())
 end)
 
 -- Add current file to harpoon
