@@ -22,7 +22,7 @@ return {
             if mark_idx ~= nil then
                 current_mark = tostring(mark_idx)
             end
-            return string.format("󱡅  %s/%d", current_mark, total_marks)
+            return string.format("󱡅 %s/%d", current_mark, total_marks)
         end
         local function lspinfo()
             if rawget(vim, "lsp") then
