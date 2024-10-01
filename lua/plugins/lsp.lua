@@ -28,9 +28,12 @@ return {
 
             -- Function to run when neovim connects to a Lsp client
             ---@diagnostic disable-next-line: unused-local
-            local on_attach = function(_client, buffer_number)
+            local on_attach = function(client, buffer_number)
                 -- Pass the current buffer to map lsp keybinds
                 map_lsp_keybinds(buffer_number)
+                if client.server_capabilities.signatureHelpProvider then
+                    require("user.lsp_autocmd").setup(client)
+                end
             end
 
             -- LSP servers and clients are able to communicate to each other what features they support.

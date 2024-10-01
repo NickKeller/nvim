@@ -46,7 +46,7 @@ return {
                 end,
                 snippet = {
                     expand = function(args)
-                        luasnip.lsp_expand(args.body)
+                        require("luasnip").lsp_expand(args.body)
                     end,
                 },
                 window = {
@@ -55,7 +55,7 @@ return {
                 },
                 completion = { completeopt = "menu,menuone,noinsert" },
                 mapping = cmp.mapping.preset.insert({
-                    ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+                    ["<C-k>"] = cmp.mapping.select_next_item(), -- previous suggestion
                     ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
                     ["<Tab>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
